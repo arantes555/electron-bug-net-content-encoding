@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "electron": "2.0.4",
+    "zlib": "^1.0.5"
+  },
+  "scripts": {
+    "start": "electron ./app/"
+  }
+}

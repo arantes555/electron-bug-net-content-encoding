@@ -1,0 +1,10 @@
+{
+  "name": "TestCase",
+  "description": "electron.net content-encoding bug testcase",
+  "version": "0.0.1",
+  "author": "arantes",
+  "license": "MIT",
+  "main": "background.js",
+  "dependencies": {
+  }
+}
