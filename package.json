@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "electron": "2.0.4",
+    "electron": "1.6.18",
     "zlib": "^1.0.5"
   },
   "scripts": {
