@@ -2,7 +2,7 @@ const http = require('http')
 const {parse} = require('url')
 const zlib = require('zlib')
 
-module.exports = class TestServer {
+class TestServer {
   constructor ({port = 30001} = {}) {
     this.server = http.createServer(this.router)
     this.port = port
@@ -45,4 +45,13 @@ module.exports = class TestServer {
       res.end('fake gzip string')
     }
   }
+}
+
+module.exports = TestServer
+
+if (require.main === module) {
+  const server = new TestServer()
+  server.start(() => {
+    console.log(`Server started listening at port ${server.port}`)
+  })
 }
