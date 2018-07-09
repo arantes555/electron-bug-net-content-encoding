@@ -46,19 +46,19 @@ electron.app.on('ready', () => {
   const server = new TestServer()
   server.start()
     // normal, plain-text encoding endpoint : everything works
+    .then(() => doRequest('/hello', {session: false}))
     .then(() => doRequest('/hello', {session: 'persist:test'}))
     .then(() => doRequest('/hello', {session: 'test'}))
-    .then(() => doRequest('/hello', {session: false}))
 
     // correct gzip-encoded endpoint : everything works
+    .then(() => doRequest('/gzip', {session: false}))
     .then(() => doRequest('/gzip', {session: 'persist:test'}))
     .then(() => doRequest('/gzip', {session: 'test'}))
-    .then(() => doRequest('/gzip', {session: false}))
 
     // bad gzip-encoding : works as intended on 1.6.x (getting an error on the response), abnormal behaviour on 1.7+ and on 2.0+ (timeout)
+    .then(() => doRequest('/invalid-content-encoding', {session: false})) // emits an error, as intended
     .then(() => doRequest('/invalid-content-encoding', {session: 'persist:test'})) // emits an error, as intended
     .then(() => doRequest('/invalid-content-encoding', {session: 'test'})) // /!\ TIMEOUT on 1.7+
-    .then(() => doRequest('/invalid-content-encoding', {session: false})) // emits an error, as intended
 
     .then(() => process.exit(0))
 })
